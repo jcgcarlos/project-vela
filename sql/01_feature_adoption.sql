@@ -28,10 +28,6 @@ SELECT	user_id, COUNT(transaction_id) AS total_transactions, SUM(amount) AS tota
 FROM	transactions
 GROUP BY user_id;
 
--- Get the user segment to determine if a user is a casual, regular or power user
-SELECT	user_id, user_segment
-FROM 	users;
-
 -- Step 3: Combine the subqueries and write the final output
 WITH feature_summary 	AS 	(SELECT	user_id, COUNT(activation_id) AS total_features_activated
 							 FROM 	feature_activations
